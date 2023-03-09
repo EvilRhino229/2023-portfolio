@@ -1,0 +1,48 @@
+<h1>Add academic experience here.</h1>
+<% if @study.errors.any? %>
+    <div id="error-explanation">
+      <h2><%= pluralize(@study.errors.count, "error") %> Error:</h2>
+      <ul>
+        <% @study.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+</div>
+
+<%= form_tag('/studies/', method: :post) do %>
+<div class="form-group">
+  <div class='row justify-content-center'>
+    <%= label_tag(:acaname, 'Institution:') %>
+    <%= text_area_tag(:acaname, @study.acaname, size: '10x1', class: "form-control") %>
+  </div>
+  <div class='row justify-content-center'>
+    <%= label_tag(:location, 'Location:') %>
+    <%= text_area_tag(:location, @study.location, size: '5x1', class: "form-control") %>
+  </div>
+  <div class='row justify-content-center'>
+    <%= label_tag(:focus, 'Major/Concentration') %>
+    <%= text_area_tag(:focus, @study.focus, size: '20x1', class: "form-control") %>
+  </div>
+  <div class='row justify-content-center'>
+    <%= label_tag(:degree, 'Type of degree or certificate if applicable') %>
+    <%= text_area_tag(:degree, @study.degree, size: '5x1', class: "form-control") %>
+  </div>
+  <div class="row justify-content-center">
+    <%= label_tag(:startdate, 'Date started') %>
+    <%= date_field_tag(:startdate, @study.startdate, size: '10x1', class: "form-control") %>
+  </div>
+  <div class="row justify-content-center">
+    <%= label_tag(:enddate, 'Date completed') %>
+    <%= date_field_tag(:enddate, @study.enddate, size: '10x1', class: "form-control") %>
+  </div>
+  <div class='row justify-content-center'>
+    <%= label_tag(:description, 'Description') %>
+    <%= text_area_tag(:description, @study.description, size: '20x2', class: "form-control") %>
+  </div>
+  <div class="row justify-content-center">
+    <%= submit_tag("Submit experience", class: 'btn btn-success') %>
+  </div>
+</div>
+<% end %>

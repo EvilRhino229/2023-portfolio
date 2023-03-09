@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Portfolio App</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+      <% if not current_page?('/') %>
+      <a href="/" class="ml-3 inline-block text-md px-4 py-2 leading-none border rounded text-white border-white mt-2 lg:mt-0">Home</a>
+      <% end %>
+      <% if user_signed_in? == false %>
+      <a href="/users/sign_in" class="ml-3 inline-block text-md px-4 py-2 leading-none border rounded text-white border-white mt-2 lg:mt-0">Login</a>
+      <% end %>
+      <% if user_signed_in? %>
+        <%= link_to('Logout', destroy_user_session_path, method: :delete,class: "ml-3 inline-block text-md px-4 py-2 leading-none border rounded text-white border-white  mt-2 lg:mt-0") %>
+      <% end %>
+    <%= flash_messages %>
+    <%= yield %>
+    <footer>
+      <% if not current_page?('/about/') %>
+      <a href="/about/">About</a>
+      <% end %>
+      <% if not current_page?('/about/') and not current_page?('/contact/') %>
+       | 
+      <% end %>
+       <% if not current_page?('/contact/') %>
+       <a href="/contact/">Contact</a>
+       <% end %>
+      <div id='loadtime' style="font-size: 12px;"><script>if (window.performance.timing.loadEventEnd > 0) document.getElementById('loadtime').innerHTML = "loaded in " + (window.performance.timing.loadEventEnd - window.performance.timing.navigationStart) + " ms"</script></div>
+      <p style="padding-top: 5px; font-size: 12px;">Today's date: <%= Date.today.strftime("%B %d, %Y") %></p>
+    </footer>
+  </body>
+</html>

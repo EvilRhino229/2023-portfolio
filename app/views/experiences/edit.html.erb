@@ -1,0 +1,36 @@
+<h1>Editing <%= @experience.title %> @ <%= @experience.expname %></h1>
+<% if @experience.errors.any? %>
+    <div id="error-explanation">
+      <h2><%= pluralize(@experience.errors.count, "error") %> Error:</h2>
+      <ul>
+        <% @experience.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+</div>
+
+<%= form_tag("/experiences/#{@experience.id}", method: :put) do %>
+<div class="form-group">
+  <div class='row justify-content-center'>
+    <%= label_tag(:expname, 'Employer:') %>
+    <%= text_area_tag(:expname, @experience.expname, size: '10x1', class: "form-control") %>
+  </div>
+  <div class='row justify-content-center'>
+    <%= label_tag(:title, 'Job title:') %>
+    <%= text_area_tag(:title, @experience.title, size: '5x1', class: "form-control") %>
+  </div>
+  <div class='row justify-content-center'>
+    <%= label_tag(:description, 'List job duties') %>
+    <%= text_area_tag(:description, @experience.description, size: '20x1', class: "form-control") %>
+  </div>
+  <div class='row justify-content-center'>
+    <%= label_tag(:years, 'Time at position') %>
+    <%= text_area_tag(:years, @experience.years, size: '20x1', class: "form-control") %>
+  </div>
+  <div class="row justify-content-center">
+    <%= submit_tag("Submit experience", class: 'btn btn-success') %>
+  </div>
+</div>
+<% end %>

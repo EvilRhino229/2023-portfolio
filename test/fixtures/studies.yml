@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  acaname: MyString
+  location: MyString
+  degree: MyString
+  startdate: 2023-03-08
+  enddate: 2023-03-08
+  description: MyString
+
+two:
+  acaname: MyString
+  location: MyString
+  degree: MyString
+  startdate: 2023-03-08
+  enddate: 2023-03-08
+  description: MyString
